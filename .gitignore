@@ -13,5 +13,5 @@ build/
 *.ipr
 
 /gradle
-/.gradlew
-/.gradlew.bat
+/gradlew.bat
+/gradlew
