@@ -19,13 +19,11 @@ public class TestDragAndDrop {
         open("/drag_and_drop");
         actions().moveToElement($("#column-a")).clickAndHold().moveToElement($("#column-b")).release().perform();
         $$("#columns div").first().$("header").shouldHave(text("B"));
-        sleep(4000);
     }
     @Test
     void dragAndDrop() {
         open("/drag_and_drop");
         $("#column-a").dragAndDropTo($("#column-b"));
         $$("#columns div").first().$("header").shouldHave(text("B"));
-        sleep(4000);
     }
 }
