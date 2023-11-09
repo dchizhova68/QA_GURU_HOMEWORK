@@ -1,4 +1,4 @@
-package lesson3;
+package dchizhova68.lesson3;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
 import com.codeborne.selenide.Configuration;
@@ -28,7 +28,7 @@ public class TestStudentRegistrationForm {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        //Configuration.holdBrowserOpen = true;
+        Configuration.holdBrowserOpen = true;
     }
 
     @Test
