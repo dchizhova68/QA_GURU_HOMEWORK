@@ -1,13 +1,9 @@
 package dchizhova68.lesson7;
 
-import com.github.javafaker.Faker;
 import dchizhova68.TestBase;
 import dchizhova68.TestData;
 import dchizhova68.pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
-
-import java.util.Locale;
-
 public class RegistrationWithFakerTests extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
     TestData testData = new TestData();

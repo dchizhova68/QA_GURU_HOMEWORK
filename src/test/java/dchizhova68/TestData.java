@@ -19,9 +19,9 @@ public class TestData {
             picture = faker.options().option("test.png", "test1.png"),
             currentAddres = String.valueOf(faker.address()),
             state = faker.options().option("NCR", "Uttar Pradesh", "Haryana", "Rajasthan"),
-            city = getCity(state);
+            city = getCityByState(state);
 
-    public String getCity(String state) {
+    public String getCityByState(String state) {
         switch (state) {
             case "NCR":
                 return faker.options().option("Delhi", "Gurgaon", "Noida");
