@@ -3,7 +3,7 @@ package dchizhova68;
 import com.github.javafaker.Faker;
 
 import java.util.Locale;
-public class TestData {
+public class TestDataRegistrationForm {
     Faker faker = new Faker(new Locale("en-GB"));
     public String firstName = faker.name().firstName(),
             lastName = faker.name().lastName(),
