@@ -1,14 +1,15 @@
 package dchizhova68.lesson7;
 
 import dchizhova68.TestBase;
-import dchizhova68.TestData;
+import dchizhova68.TestDataRegistrationForm;
 import dchizhova68.pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
 public class RegistrationWithFakerTests extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
-    TestData testData = new TestData();
+    TestDataRegistrationForm testData = new TestDataRegistrationForm();
     @Test
     void successfulRegistrationTest() {
+
 
         registrationPage.openPage()
                 .setFirstName(testData.firstName)

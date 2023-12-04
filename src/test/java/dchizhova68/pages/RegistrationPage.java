@@ -32,7 +32,7 @@ public class RegistrationPage {
     TableResponsiveComponent tableResponsive = new TableResponsiveComponent();
 
     public RegistrationPage openPage() {
-        open("/automation-practice-form");
+        open("https://demoqa.com/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");

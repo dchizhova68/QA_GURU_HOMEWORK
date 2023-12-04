@@ -33,7 +33,7 @@ public class TestStudentRegistrationForm {
 
     @Test
     void fillFormTest() {
-        open("/automation-practice-form");
+        open("https://demoqa.com/automation-practice-form");
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
         $("#firstName").setValue(FIRST_NAME);
