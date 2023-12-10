@@ -1,5 +1,6 @@
 package dchizhova68.pages;
 
+import io.qameta.allure.Step;
 import static com.codeborne.selenide.CollectionCondition.itemWithText;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
@@ -22,55 +23,69 @@ public class LitresPage {
             bookCardTitle = $$(byAttribute("data-test-id","cart__bookCardTitle--wrapper"));
 
 
+    @Step("Открываем главную страницу")
     public LitresPage openPage() {
         open("https://www.litres.ru");
         return this;
     }
 
+    @Step("Вводим в поисковую строку {author}")
     public LitresPage setSearchValue(String author) {
         searchInput.setValue(author).pressEnter();
 
         return this;
     }
 
+    @Step()
     public LitresPage checkSearchResultHavePopularBookByAuthor(String bookTitle) {
         bookTitleTag.shouldHave(itemWithText(bookTitle));;
 
         return this;
     }
 
+    @Step("Переходим в детальную форм просмотра первой книги из списка")
     public LitresPage openDetailFormBook(String bookTitle) {
         linkDetailFormBook.click();
 
         return this;
     }
+
+    @Step("Закрываем модальное окно")
     public LitresPage closeModalWindow() {
         closeModalButton.click();
 
         return this;
     }
 
+    @Step("Добавляем книгу в корзину")
     public LitresPage addToBasket() {
         addToCartButton.click();
 
         return this;
     }
 
+    @Step("Переходим в корзину")
     public LitresPage openBasket() {
         tabBasket.click();
 
         return this;
     }
+
+    @Step("Проверяем, что в корзине есть книга{bookTitle}")
     public LitresPage checkBasketContainsAddedBook(String bookTitle) {
         bookCardTitle.shouldHave(itemWithText(bookTitle));
 
         return this;
     }
+
+    @Step()
     public LitresPage openPageByName(String pageName) {
         $(byTagAndText("div", pageName)).click();
 
         return this;
     }
+
+    @Step()
     public LitresPage checkBreadCrumbs(String pageName) {
         breadcrumbsSelector.shouldHave(text(pageName));
 
