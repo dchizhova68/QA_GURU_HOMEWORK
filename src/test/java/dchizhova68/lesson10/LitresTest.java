@@ -5,6 +5,7 @@ import dchizhova68.pages.LitresPage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.*;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -12,10 +13,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 public class LitresTest extends TestBase {
     LitresPage litres = new LitresPage();
 
-    @CsvSource(value = {
-            "Гоголь, Вий",
-            "Булгаков, Мастер и Маргарита"
-    })
+    @CsvFileSource(resources = "/test_data/findBookByAuthorTest.csv")
     @ParameterizedTest(name = "В результатах поиска по автору {0} должна быть книга {1}")
     @Tag("BLOKER")
     void findBookByAuthorTest(String author, String bookName) {
@@ -24,8 +22,9 @@ public class LitresTest extends TestBase {
                 .checkSearchResultHavePopularBookByAuthor(bookName);
     }
 
-    @ValueSource(strings = {
-            "Гранатовый браслет"
+    @CsvSource(value = {
+            "Гранатовый браслет",
+            "Отцы и дети"
     })
     @DisplayName("Проверка добавления книги в корзину")
     @Tag("BLOKER")
