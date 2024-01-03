@@ -1,0 +1,19 @@
+{
+  "User id": "4457",
+  "Cache count": 28,
+  "Transactions": 217,
+  "transactions": [
+    {
+      "transactionType": "Ручная",
+      "count": 20,
+      "comment": "test1",
+      "id": 1
+    },
+    {
+      "transactionType": "Автоматическая",
+      "count": 50,
+      "comment": "Вам начислено 50 этакоинов за тиражирование успешной практики.",
+      "id": 31
+    }
+  ]
+}
