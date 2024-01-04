@@ -19,11 +19,9 @@ public class ReadingZipArh {
 
     @ParameterizedTest(name = "Проверяем наличие файла {0} и его содержимое")
     @CsvSource(value = {
-            "csvFile.csv, Selenide",
-            "excelFile.xlsx, value4",
-            "pdfFile.pdf, QA GURU"
+            "csvFile.csv, Selenide"
     })
-    void zipArhParsingTest(String fileName, String value) throws Exception {
+    void csvParsingTest(String fileName, String value) throws Exception {
         try (ZipInputStream is = new ZipInputStream(
                 classLoader.getResourceAsStream("testArh.zip")
         )) {
@@ -34,12 +32,48 @@ public class ReadingZipArh {
                         CSVReader reader = new CSVReader(new InputStreamReader(is, StandardCharsets.UTF_8));
                         assertThat(reader.readNext()[0]).contains(value);
                         return;
-                    } else if (fileName.contains(".xlsx")) {
+                    }
+                    return;
+                }
+            }
+            fail("Файла " + fileName + " нет в архиве!");
+        }
+    }
+    @ParameterizedTest(name = "Проверяем наличие файла {0} и его содержимое")
+    @CsvSource(value = {
+            "excelFile.xlsx, value4"
+    })
+    void xlsxParsingTest(String fileName, String value) throws Exception {
+        try (ZipInputStream is = new ZipInputStream(
+                classLoader.getResourceAsStream("testArh.zip")
+        )) {
+            ZipEntry entry;
+            while ((entry = is.getNextEntry()) != null) {
+                if (entry.getName().equals(fileName)) {
+                    if (fileName.contains(".xlsx")) {
                         XLS xls = new XLS(is);
                         assertThat(xls.excel.getSheetAt(0).getRow(1).getCell(1).getStringCellValue())
                                 .isEqualTo(value);
                         return;
-                    } else if (fileName.contains(".pdf")) {
+                    }
+                    return;
+                }
+            }
+            fail("Файла " + fileName + " нет в архиве!");
+        }
+    }
+    @ParameterizedTest(name = "Проверяем наличие файла {0} и его содержимое")
+    @CsvSource(value = {
+            "pdfFile.pdf, QA GURU"
+    })
+    void pdfParsingTest(String fileName, String value) throws Exception {
+        try (ZipInputStream is = new ZipInputStream(
+                classLoader.getResourceAsStream("testArh.zip")
+        )) {
+            ZipEntry entry;
+            while ((entry = is.getNextEntry()) != null) {
+                if (entry.getName().equals(fileName)) {
+                    if (fileName.contains(".pdf")) {
                         PDF pdf = new PDF(is);
                         assertThat(pdf.text).contains(value);
                         return;
@@ -47,7 +81,7 @@ public class ReadingZipArh {
                     return;
                 }
             }
-                fail("Файла " + fileName + " нет в архиве!");
+            fail("Файла " + fileName + " нет в архиве!");
         }
     }
 }
