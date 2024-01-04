@@ -48,7 +48,8 @@ dependencies {
             'com.google.code.gson:gson:2.10.1',
             "org.assertj:assertj-core:3.11.1",
             "com.fasterxml.jackson.core:jackson-core:2.13.1",
-            "com.google.code.gson:gson:2.10.1")
+            "com.google.code.gson:gson:2.10.1",
+            "org.assertj:assertj-core:3.25.1")
 }
 
 test {
